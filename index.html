@@ -1,0 +1,102 @@
+<!DOCTYPE shield>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Safeguard - SOS Emergency</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i data-lucide="shield-alert" class="icon-logo"></i>
+                <span>Safeguard</span>
+            </div>
+            <button id="settings-btn" class="icon-btn" aria-label="Settings">
+                <i data-lucide="settings"></i>
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="status-container">
+                <span id="location-status" class="status-badge checking">
+                    <i data-lucide="map-pin" class="status-icon"></i>
+                    Checking Location...
+                </span>
+            </div>
+
+            <div class="sos-wrapper">
+                <div class="pulse-ring ring-1"></div>
+                <div class="pulse-ring ring-2"></div>
+                <div class="pulse-ring ring-3"></div>
+                <button id="sos-btn" class="sos-btn">
+                    <span class="sos-text">SOS</span>
+                    <span class="sos-subtext">Tap to send alert</span>
+                </button>
+            </div>
+
+            <div class="instructions">
+                <p>Pressing SOS will send your live location<br>to your emergency contacts.</p>
+            </div>
+        </main>
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content glass-panel">
+                <div class="modal-header">
+                    <h2>Emergency Setup</h2>
+                    <button id="close-modal-btn" class="icon-btn">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="info-box">
+                        <i data-lucide="info" class="info-icon"></i>
+                        <p>Set up a Telegram Bot using <strong>@BotFather</strong> to receive emergency alerts.</p>
+                    </div>
+
+                    <form id="settings-form">
+                        <div class="input-group">
+                            <label for="bot-token">Telegram Bot Token</label>
+                            <input type="text" id="bot-token" placeholder="e.g. 123456789:ABCdefGHIjkl..." required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="chat-id">Chat ID (Target User or Group)</label>
+                            <input type="text" id="chat-id" placeholder="e.g. 987654321" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="custom-message">Emergency Message</label>
+                            <textarea id="custom-message" rows="3"
+                                placeholder="Help! I am in danger. Here is my location:">Help! I need immediate assistance. This is my current location:</textarea>
+                        </div>
+
+                        <button type="submit" class="primary-btn">Save Configuration</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast hidden">
+            <i id="toast-icon" data-lucide="check-circle" class="toast-icon"></i>
+            <span id="toast-message">Configuration saved successfully!</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
